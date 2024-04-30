@@ -50,7 +50,3 @@ def checkout(skus):
         return total_sum
     else:
         return -1
-
-
-
-
