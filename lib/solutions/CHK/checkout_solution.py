@@ -15,7 +15,7 @@ PRICE_TABLE = [
 ]
 
 def checkout(skus):
-    if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]+$', skus)):
+    if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]*$', skus)):
         total_sum = 0
         for row in PRICE_TABLE:
             sku = row.get('sku')
@@ -35,8 +35,3 @@ def checkout(skus):
         return total_sum
     else:
         return -1
-
-
-
-
-
