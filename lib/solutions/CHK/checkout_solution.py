@@ -66,19 +66,19 @@ def remove_multibuy(haystack):
     found = 0
     while found < 3:
         if "Z" in temp_haystack:
-            temp_haystack = haystack.replace("Z", "", 1)
+            temp_haystack = temp_haystack.replace("Z", "", 1)
             found += 1
         elif "S" in temp_haystack:
-            temp_haystack = haystack.replace("S", "", 1)
+            temp_haystack = temp_haystack.replace("S", "", 1)
             found += 1
         elif "T" in temp_haystack:
-            temp_haystack = haystack.replace("T", "", 1)
+            temp_haystack = temp_haystack.replace("T", "", 1)
             found += 1
         elif "Y" in temp_haystack:
-            temp_haystack = haystack.replace("Y", "", 1)
+            temp_haystack = temp_haystack.replace("Y", "", 1)
             found += 1
         elif "X" in temp_haystack:
-            temp_haystack = haystack.replace("X", "", 1)
+            temp_haystack = temp_haystack.replace("X", "", 1)
             found += 1
         else:
             return False, haystack
@@ -110,3 +110,4 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
