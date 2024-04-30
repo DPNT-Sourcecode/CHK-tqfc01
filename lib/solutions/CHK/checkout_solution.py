@@ -14,4 +14,3 @@ def checkout(skus):
             count = skus.count(sku)
     else:
         return -1
-
