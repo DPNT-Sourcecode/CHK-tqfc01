@@ -32,22 +32,22 @@ OFFER_TABLE = {
 def checkout(skus):
     if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]*$', skus)):
         total_sum = 0
-        for row in PRICE_TABLE:
-            sku = row.get('sku')
+        for price_row in PRICE_TABLE:
+            sku = price_row.get('sku')
             count = skus.count(sku)
 
             if count:
-                offer = row.get('offer')
-                offer_sum = 0
-                if offer and count >= offer:
-                    offer_count = math.floor(count / offer)
-                    count = count % offer
-                    offer_sum = offer_count * row.get('offer_price', 0)
+                offers = OFFER_TABLE.get(sku, [])
+                for offer_row in offers:
+                    offer = offer_row.get('offer')
+                    if count >= offer:
+                        offer_count = math.floor(count / offer)
+                        count = count % offer
+                        total_sum += offer_count * offer_row.get('offer_price', 0)
                 
-                count_sum = count * row.get('price', 0)
-
-                total_sum = total_sum + count_sum + offer_sum
+                total_sum += count * price_row.get('price', 0)
         return total_sum
     else:
         return -1
+
 
