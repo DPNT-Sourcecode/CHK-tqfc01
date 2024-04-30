@@ -25,42 +25,27 @@ OFFERS_TABLE = [
 
 def find_and_remove(needles, haystack):
     if any(n not in haystack for n in needles):
-        return False
+        return False, haystack
     for n in needles:
-        haystack.replace(n, '', 1)
-    return True
+        haystack = haystack.replace(n, '', 1)
+    return True, haystack
 
 def checkout(skus):
     if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]*$', skus)):
         skus = ''.join(sorted(skus))
         total_sum = 0
+
         for row in OFFERS_TABLE:
             while True:
-                index = skus.find(row.get('offer'))
-                if index > -1:
-                    skus = skus[:index] + skus[index + 1:]
+                offer_found = find_and_remove(row.get('offer'), skus)
+                if offer_found:
                     total_sum += row.get('price')
                 else:
                     break
+
         for sku in skus:
             total_sum += PRICE_TABLE.get(sku, 0)
 
-        # total_sum = 0
-        # for price_row in PRICE_TABLE:
-        #     sku = price_row.get('sku')
-        #     count = skus.count(sku)
-
-        #     if count:
-        #         offers = OFFER_TABLE.get(sku, [])
-        #         for offer_row in offers:
-        #             offer = offer_row.get('offer')
-        #             if count >= offer:
-        #                 offer_count = math.floor(count / offer)
-        #                 count = count % offer
-        #                 total_sum += offer_count * offer_row.get('offer_price', 0)
-                
-        #         total_sum += count * price_row.get('price', 0)
         return total_sum
     else:
         return -1
-
