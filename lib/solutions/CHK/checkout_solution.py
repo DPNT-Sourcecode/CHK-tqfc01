@@ -16,7 +16,7 @@ PRICE_TABLE = {
     "H": 10,
     "I": 35,
     "J": 60,
-    "K": 80,
+    "K": 70,
     "L": 90,
     "M": 15,
     "N": 40,
@@ -24,14 +24,14 @@ PRICE_TABLE = {
     "P": 50,
     "Q": 30,
     "R": 50,
-    "S": 30,
+    "S": 20,
     "T": 20,
     "U": 40,
     "V": 50,
     "W": 20,
-    "X": 90,    
-    "Y": 10,
-    "Z": 50
+    "X": 17,    
+    "Y": 20,
+    "Z": 21
 }
 
 ALLOWED_SKUS = "".join(PRICE_TABLE.keys())
@@ -44,7 +44,7 @@ OFFERS_TABLE = [
     {"offer": ["FFF"], "price": 20},
     {"offer": ["HHHHHHHHHH"], "price": 80},
     {"offer": ["HHHHH"], "price": 45},
-    {"offer": ["KK"], "price": 150},
+    {"offer": ["KK"], "price": 120},
     {"offer": ["NNN", "M"], "price": 120},
     {"offer": ["PPPPP"], "price": 200},
     {"offer": ["Q", "RRR"], "price": 150},
@@ -80,4 +80,5 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
