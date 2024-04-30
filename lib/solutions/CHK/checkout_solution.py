@@ -6,13 +6,28 @@
 import re
 import math
 
-ALLOWED_SKUS = 'ABCD'
+ALLOWED_SKUS = 'ABCDE'
+
 PRICE_TABLE = [
-    {'sku': 'A', 'price': 50, 'offer': 3, 'offer_price': 130},
-    {'sku': 'B', 'price': 30, 'offer': 2, 'offer_price': 45},
+    {'sku': 'A', 'price': 50},
+    {'sku': 'B', 'price': 30},
     {'sku': 'C', 'price': 20},
-    {'sku': 'D', 'price': 15}
+    {'sku': 'D', 'price': 15},
+    {'sku': 'E', 'price': 40}
 ]
+
+OFFER_TABLE = {
+    'A': [
+        {'offer': 5, 'offer_price': 200},
+        {'offer': 3, 'offer_price': 130}
+    ],
+    'B': [
+        {'offer': 2, 'offer_price': 45}
+    ],
+    'E': [
+        {'offer': 2, 'offer_price': 40}
+    ]
+}
 
 def checkout(skus):
     if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]*$', skus)):
@@ -35,3 +50,4 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
