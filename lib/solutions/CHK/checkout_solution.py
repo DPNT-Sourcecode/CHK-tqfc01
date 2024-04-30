@@ -4,7 +4,6 @@
 # skus = unicode string
 
 import re
-# import math
 
 ALLOWED_SKUS = "ABCDE"
 
@@ -17,10 +16,10 @@ PRICE_TABLE = {
 }
 
 OFFERS_TABLE = [
-    {"offer": "AAAAA", "price": 200},
-    {"offer": "AAA", "price": 130},
-    {"offer": "BEE", "price": 80},
-    {"offer": "BB", "price": 45}
+    {"offer": ["AAAAA"], "price": 200},
+    {"offer": ["AAA"], "price": 130},
+    {"offer": ["B", "EE"], "price": 80},
+    {"offer": ["BB"], "price": 45}
 ]
 
 def find_and_remove(needles, haystack):
@@ -49,4 +48,5 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
