@@ -20,7 +20,8 @@ OFFERS_TABLE = [
     {"offer": ["AAAAA"], "price": 200},
     {"offer": ["AAA"], "price": 130},
     {"offer": ["B", "EE"], "price": 80},
-    {"offer": ["BB"], "price": 45}
+    {"offer": ["BB"], "price": 45},
+    {"offer": ["FFF"], "price": 20}
 ]
 
 def find_and_remove(needles, haystack):
@@ -49,6 +50,7 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
 
 
