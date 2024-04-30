@@ -16,14 +16,14 @@ PRICE_TABLE = [
 
 def checkout(skus):
     if isinstance(skus, str) and bool(re.match(f'^[{ALLOWED_SKUS}]+$', skus)):
+        total_sum = 0
         for row in PRICE_TABLE:
             sku = row.get('sku')
             count = skus.count(sku)
 
             if count:
-                total_sum = count_sum = offer_sum = 0
-
                 offer = row.get('offer')
+                offer_sum = 0
                 if offer and count >= offer:
                     offer_count = math.floor(count / offer)
                     count = count % offer
@@ -35,6 +35,7 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
 
 
