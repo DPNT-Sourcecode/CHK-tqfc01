@@ -19,20 +19,21 @@ def checkout(skus):
         for row in PRICE_TABLE:
             sku = row.get('sku')
             count = skus.count(sku)
-            count_sum = 0
 
-            offer = row.get('offer')
-            offer_sum = 0
-            if offer and count >= offer:
-                offer_count = math.floor(count / offer)
-                count = count % offer
-                offer_sum = offer_count * row.get('offer_price', 0)
-            
-            count_sum = count * row.get('price', 0)
+            if count:
+                offer = row.get('offer')
+                offer_sum = 0
+                if offer and count >= offer:
+                    offer_count = math.floor(count / offer)
+                    count = count % offer
+                    offer_sum = offer_count * row.get('offer_price', 0)
+                
+                count_sum = count * row.get('price', 0)
 
-            total_sum = total_sum + count_sum + offer_sum
+                total_sum = total_sum + count_sum + offer_sum
         return total_sum
     else:
         return -1
+
 
 
