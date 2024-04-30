@@ -25,7 +25,7 @@ OFFER_TABLE = {
         {'offer': 2, 'offer_price': 45}
     ],
     'E': [
-        {'offer': 2, 'offer_price': 40}
+        {'offer': 3, 'offer_price': 80}
     ]
 }
 
@@ -49,5 +49,3 @@ def checkout(skus):
         return total_sum
     else:
         return -1
-
-
