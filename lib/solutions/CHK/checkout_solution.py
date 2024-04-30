@@ -21,8 +21,9 @@ def checkout(skus):
             count = skus.count(sku)
 
             if count:
+                total_sum = count_sum = offer_sum = 0
+
                 offer = row.get('offer')
-                offer_sum = 0
                 if offer and count >= offer:
                     offer_count = math.floor(count / offer)
                     count = count % offer
@@ -34,6 +35,7 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
 
 
