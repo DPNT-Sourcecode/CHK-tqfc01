@@ -64,7 +64,7 @@ def find_and_remove(needles, haystack):
 def remove_multibuy(haystack):
     temp_haystack = haystack
     found = 0
-    while len(found) < 3:
+    while found < 3:
         if "Z" in temp_haystack:
             temp_haystack = haystack.replace("Z", "", 1)
             found += 1
@@ -89,6 +89,13 @@ def checkout(skus):
         skus = "".join(sorted(skus))
         total_sum = 0
 
+        while True:
+            multibuy_found, skus = remove_multibuy(skus)
+            if multibuy_found:
+                total_sum += 45
+            else:
+                break
+
         for row in OFFERS_TABLE:
             while True:
                 offer_found, skus = find_and_remove(row.get("offer", ""), skus)
@@ -103,6 +110,3 @@ def checkout(skus):
         return total_sum
     else:
         return -1
-
-
-
