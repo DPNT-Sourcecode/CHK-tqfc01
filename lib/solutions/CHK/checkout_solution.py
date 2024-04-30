@@ -5,15 +5,16 @@
 
 import re
 
-ALLOWED_SKUS = "ABCDE"
-
 PRICE_TABLE = {
     "A": 50,
     "B": 30,
     "C": 20,
     "D": 15,
-    "E": 40
+    "E": 40,
+    "F": 10
 }
+
+ALLOWED_SKUS = "".join(PRICE_TABLE.keys())
 
 OFFERS_TABLE = [
     {"offer": ["AAAAA"], "price": 200},
@@ -48,5 +49,6 @@ def checkout(skus):
         return total_sum
     else:
         return -1
+
 
 
